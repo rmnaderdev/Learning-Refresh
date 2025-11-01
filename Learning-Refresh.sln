@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KthLargestElementInStream", "KthLargestElementInStream/KthLargestElementInStream.csproj", "{28687B2A-5584-4DE2-825B-C95A31D4E2B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LRU-Cache", "LRU-Cache\LRU-Cache.csproj", "{323F5591-8C69-4D93-A461-258EA5C063CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28687B2A-5584-4DE2-825B-C95A31D4E2B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28687B2A-5584-4DE2-825B-C95A31D4E2B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28687B2A-5584-4DE2-825B-C95A31D4E2B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28687B2A-5584-4DE2-825B-C95A31D4E2B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{323F5591-8C69-4D93-A461-258EA5C063CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{323F5591-8C69-4D93-A461-258EA5C063CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{323F5591-8C69-4D93-A461-258EA5C063CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{323F5591-8C69-4D93-A461-258EA5C063CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
