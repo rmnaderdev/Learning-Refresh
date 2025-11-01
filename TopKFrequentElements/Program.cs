@@ -1,6 +1,6 @@
 ﻿var input = new[]
 {
-    1, 1, 1, 2, 2, 3
+    1
 };
 
 var obj = new Solution();
@@ -36,7 +36,9 @@ public class Solution
         List<int> res = new List<int>();
         while (heap.Count > 0)
         {
-            res.Insert(0, heap.);
+            res.Insert(0, heap.Dequeue());
         }
+        
+        return res.ToArray();
     }
 }
