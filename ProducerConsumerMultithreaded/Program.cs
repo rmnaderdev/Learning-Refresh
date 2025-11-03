@@ -1,44 +1,69 @@
-﻿class Program
+﻿using System.Collections.Concurrent;
+
+class Program
 {
-    static Queue<int> queue = new Queue<int>();
-    static int itemCount = 0;
+    static ConcurrentQueue<int> PendingQueue = new ConcurrentQueue<int>();
+    static int TotalConsumerThreads = Environment.ProcessorCount;
+    static int TotalItemsToProcess = int.MaxValue;
+
+
+    // Instead of a lock, a ConcurrentDictionary<int, byte> can also be used here as a hashset
+    private static ConcurrentDictionary<int, byte> ProcessedItems = new ConcurrentDictionary<int, byte>();
 
     static void Main()
     {
+        List<Thread> consumers = new List<Thread>();
+
+        Enumerable.Range(1, TotalConsumerThreads)
+            .ToList()
+            .ForEach(consumer =>
+            {
+                var t = new Thread(Consumer);
+                t.Name = consumer.ToString();
+                consumers.Add(t);
+            });
+
         Thread producerThread = new Thread(Producer);
-        Thread consumerThread1 = new Thread(Consumer);
-        Thread consumerThread2 = new Thread(Consumer);
-        
 
         producerThread.Start();
-        consumerThread1.Start();
-        consumerThread2.Start();
+        Thread.Sleep(500);
+        foreach (var consumer in consumers)
+        {
+            consumer.Start();
+        }
 
         producerThread.Join();
-        consumerThread1.Join();
-        consumerThread2.Join();
+        foreach (var consumer in consumers)
+        {
+            consumer.Join();
+        }
     }
 
     static void Producer()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < TotalItemsToProcess; i++)
         {
-            queue.Enqueue(i);
+            PendingQueue.Enqueue(i);
             Console.WriteLine($"Produced: {i}");
-            Thread.Sleep(100);
         }
     }
 
     static void Consumer()
     {
-        for (int i = 0; i < 10; i++)
+        // No lock is needed to read from ProcessedItems
+        while (ProcessedItems.Count < TotalItemsToProcess)
         {
-            if (queue.Count > 0)
+            if (!PendingQueue.IsEmpty && PendingQueue.TryDequeue(out int num))
             {
-                int item = queue.Dequeue();
-                Console.WriteLine($"Consumed: {item}");
+                if (!ProcessedItems.TryAdd(num, 0))
+                {
+                    throw new Exception($"{num} has already been processed");
+                }
+                
+                Console.WriteLine($"[{Thread.CurrentThread.Name}] {num} has been processed");
             }
-            Thread.Sleep(150);
         }
+
+        Console.WriteLine($"{Thread.CurrentThread.Name} finished");
     }
 }
