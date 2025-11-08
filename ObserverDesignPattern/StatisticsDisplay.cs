@@ -20,10 +20,10 @@ public class StatisticsDisplay : IObserver, IDisplayElement
         _weatherData.RegisterObserver(this);
     }
     
-    public void Update(double temperature, double humidity, double pressure)
+    public void Update()
     {
-        _currentTemperature = temperature;
-        _temperatures.Add(temperature);
+        _currentTemperature = _weatherData.Temperature;
+        _temperatures.Add(_currentTemperature);
         
         // Compute the statistics with every update
         _averageTemperature = _temperatures.Average();

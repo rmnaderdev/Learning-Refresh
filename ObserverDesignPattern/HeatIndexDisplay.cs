@@ -13,9 +13,9 @@ public class HeatIndexDisplay : IObserver, IDisplayElement
         _weatherData.RegisterObserver(this);
     }
     
-    public void Update(double temperature, double humidity, double pressure)
+    public void Update()
     {
-        _currentHeatIndex = ComputeHeatIndex(temperature, humidity);
+        _currentHeatIndex = ComputeHeatIndex(_weatherData.Temperature, _weatherData.Humidity);
         
         Display();
     }

@@ -7,9 +7,9 @@ public class WeatherData : ISubject
     private List<IObserver> Observers { get; set; } = new();
     
     // State of the weather data
-    private double Temperature { get; set; }
-    private double Humidity { get; set; }
-    private double Pressure { get; set; }
+    public double Temperature { get; private set; }
+    public double Humidity { get; private set; }
+    public double Pressure { get; private set; }
 
     private void MeasurementsChanged()
     {
@@ -39,7 +39,7 @@ public class WeatherData : ISubject
     {
         Observers.ForEach(o =>
         {
-            o.Update(Temperature, Humidity, Pressure);
+            o.Update();
         });
     }
 }
