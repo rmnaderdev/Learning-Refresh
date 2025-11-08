@@ -8,6 +8,7 @@ class Program
         
         CurrentConditionsDisplay currentConditionsDisplay = new CurrentConditionsDisplay(weatherData);
         StatisticsDisplay statisticsDisplay = new StatisticsDisplay(weatherData);
+        HeatIndexDisplay heatIndexDisplay = new HeatIndexDisplay(weatherData);
         
         weatherData.SetMeasurements(80, 65, 30.4);
         weatherData.SetMeasurements(82, 70, 29.2);
