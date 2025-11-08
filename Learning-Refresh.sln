@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindCycleInLinkedList", "Fi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProducerConsumerMultithreaded", "ProducerConsumerMultithreaded\ProducerConsumerMultithreaded.csproj", "{49BC2ED4-71E4-4EC1-B81C-787B01A81465}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrategyDesignPattern", "StrategyDesignPattern\StrategyDesignPattern.csproj", "{73F2A1F3-C737-4BEE-97CF-8572B07DBD48}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{49BC2ED4-71E4-4EC1-B81C-787B01A81465}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49BC2ED4-71E4-4EC1-B81C-787B01A81465}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49BC2ED4-71E4-4EC1-B81C-787B01A81465}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73F2A1F3-C737-4BEE-97CF-8572B07DBD48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73F2A1F3-C737-4BEE-97CF-8572B07DBD48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73F2A1F3-C737-4BEE-97CF-8572B07DBD48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73F2A1F3-C737-4BEE-97CF-8572B07DBD48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
