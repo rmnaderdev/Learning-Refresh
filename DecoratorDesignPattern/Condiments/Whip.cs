@@ -9,6 +9,6 @@ public class Whip(Beverage beverage) : CondimentDecorator(beverage)
 
     public override double Cost()
     {
-        return Beverage.Cost() + 0.10;
+        return Beverage.Cost() + 0.10 + GetSizeUpcharge();
     }
 }

@@ -2,7 +2,7 @@ namespace DecoratorDesignPattern.Beverages;
 
 public class HouseBlend : Beverage
 {
-    public HouseBlend()
+    public HouseBlend(Size size) : base(size)
     {
         Description = "House Blend Coffee";
     }

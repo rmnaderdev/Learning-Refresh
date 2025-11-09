@@ -9,6 +9,6 @@ public class Mocha(Beverage beverage) : CondimentDecorator(beverage)
 
     public override double Cost()
     {
-        return Beverage.Cost() + 0.20;
+        return Beverage.Cost() + 0.20 + GetSizeUpcharge();
     }
 }
