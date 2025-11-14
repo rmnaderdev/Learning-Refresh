@@ -1,20 +1,17 @@
 namespace FactoryDesignPattern;
 
-public class PizzaStore
+// This class is not tightly coupled to any concrete Pizza classes
+// It relies on subclasses to handle the instantiation of the Pizza objects
+public abstract class PizzaStore
 {
-    private SimplePizzaFactory _factory;
-
-    public PizzaStore(SimplePizzaFactory factory)
-    {
-        _factory = factory;
-    }
-
     public Pizza OrderPizza(string type)
     {
         Pizza pizza;
         
-        pizza = _factory.CreatePizza("cheese");
+        // Call the abstract factory method to create a pizza
+        pizza = CreatePizza(type);
         
+        // These items stay the same for all pizza stores
         pizza.Prepare();
         pizza.Bake();
         pizza.Cut();
@@ -22,5 +19,7 @@ public class PizzaStore
         
         return pizza;
     }
-
+    
+    // Subclasses will override this and handle creating the pizza their way
+    protected abstract Pizza CreatePizza(string type);
 }

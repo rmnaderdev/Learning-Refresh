@@ -1,34 +1,34 @@
 using FactoryDesignPattern.Products;
 
-namespace FactoryDesignPattern;
+namespace FactoryDesignPattern.Stores;
 
-public class SimplePizzaFactory
+public class NYPizzaStore : PizzaStore
 {
-    public Pizza CreatePizza(string type)
+    protected override Pizza CreatePizza(string type)
     {
-        Pizza pizza;
-        
+        Pizza pizza = null;
+
         if (type.Equals("cheese", StringComparison.OrdinalIgnoreCase))
         {
-            pizza = new CheesePizza();
+            pizza = new NYStyleCheesePizza();
         }
         else if (type.Equals("pepperoni", StringComparison.OrdinalIgnoreCase))
         {
-            pizza = new PepperoniPizza();
+            pizza = new NYStylePepperoniPizza();
         }
         else if (type.Equals("clam", StringComparison.OrdinalIgnoreCase))
         {
-            pizza = new ClamPizza();
+            pizza = new NYStyleClamPizza();
         }
         else if (type.Equals("veggie", StringComparison.OrdinalIgnoreCase))
         {
-            pizza = new VeggiePizza();
+            pizza = new NYStyleVeggiePizza();
         }
         else
         {
             throw new ArgumentException("Unknown pizza type: " + type);
         }
-        
+
         return pizza;
     }
 }
