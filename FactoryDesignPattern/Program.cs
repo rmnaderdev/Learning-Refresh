@@ -6,15 +6,11 @@ class Program
     {
         PizzaStore nyStore = new Stores.NYPizzaStore();
         PizzaStore chicagoStore = new Stores.ChicagoPizzaStore();
-        PizzaStore californiaStore = new Stores.CaliforniaPizzaStore();
 
         Pizza pizza = nyStore.OrderPizza("cheese");
         Console.WriteLine("Ethan ordered a " + pizza.Name + "\n");
 
         pizza = chicagoStore.OrderPizza("veggie");
         Console.WriteLine("Joel ordered a " + pizza.Name + "\n");
-        
-        pizza = californiaStore.OrderPizza("clam");
-        Console.WriteLine("Samantha ordered a " + pizza.Name + "\n");
     }
 }

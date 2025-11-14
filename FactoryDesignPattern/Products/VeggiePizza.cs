@@ -2,16 +2,20 @@ namespace FactoryDesignPattern.Products;
 
 public class VeggiePizza : Pizza
 {
-    public VeggiePizza()
+    private readonly IPizzaIngredientFactory _pizzaIngredientFactory;
+
+    public VeggiePizza(IPizzaIngredientFactory pizzaIngredientFactory)
     {
+        _pizzaIngredientFactory = pizzaIngredientFactory;
         Name = "Veggie Pizza";
-        Dough = "Crust";
-        Sauce = "Marinara Sauce";
-        Toppings.Add("Shredded Mozzarella");
-        Toppings.Add("Grated Parmesan");
-        Toppings.Add("Diced Onion");
-        Toppings.Add("Sliced Mushrooms");
-        Toppings.Add("Sliced Red Pepper");
-        Toppings.Add("Sliced Black Olives");
+    }
+
+    public override void Prepare()
+    {
+        Console.WriteLine($"Preparing {Name}");
+        Dough = _pizzaIngredientFactory.CreateDough();
+        Sauce = _pizzaIngredientFactory.CreateSauce();
+        Cheese = _pizzaIngredientFactory.CreateCheese();
+        Veggies = _pizzaIngredientFactory.CreateVeggies();
     }
 }
